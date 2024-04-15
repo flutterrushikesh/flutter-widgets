@@ -73,7 +73,7 @@ class _MySlidableState extends State {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Widget Slidable"),
+        title: const Text("Slidable"),
         backgroundColor: const Color.fromRGBO(2, 167, 177, 1),
       ),
       body: ListView.builder(
@@ -84,9 +84,8 @@ class _MySlidableState extends State {
               child: Slidable(
                 closeOnScroll: true,
                 endActionPane: ActionPane(
-                  // dragDismissible: false,
                   extentRatio: 0.2,
-                  motion: DrawerMotion(),
+                  motion: const BehindMotion(),
                   children: [
                     Expanded(
                       child: Column(
