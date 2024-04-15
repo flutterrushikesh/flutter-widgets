@@ -99,30 +99,31 @@ class _MyAlertBoxState extends State {
 
   void showWarnig() {
     showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text("Warning"),
-            content: const Text("Please enter valid details"),
-            actionsAlignment: MainAxisAlignment.center,
-            actions: [
-              ElevatedButton(
-                style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(Colors.blue)),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text(
-                  "Ok",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                  ),
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Warning"),
+          content: const Text("Please enter valid details"),
+          actionsAlignment: MainAxisAlignment.center,
+          actions: [
+            ElevatedButton(
+              style: const ButtonStyle(
+                  backgroundColor: MaterialStatePropertyAll(Colors.blue)),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text(
+                "Ok",
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
                 ),
               ),
-            ],
-          );
-        });
+            ),
+          ],
+        );
+      },
+    );
   }
 
   void showAlertBoox() {
