@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 void main() {
@@ -77,99 +75,100 @@ class _MySlidableState extends State {
         backgroundColor: const Color.fromRGBO(2, 167, 177, 1),
       ),
       body: ListView.builder(
-          itemCount: cards.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Padding(
-              padding: const EdgeInsets.all(15),
-              child: Slidable(
-                closeOnScroll: true,
-                endActionPane: ActionPane(
-                  extentRatio: 0.2,
-                  motion: const BehindMotion(),
-                  children: [
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              setState(() {});
-                              toggleIcon = !toggleIcon;
-                            },
-                            child: isToggleIcon(),
-                          )
-                        ],
-                      ),
-                    )
+        itemCount: cards.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Padding(
+            padding: const EdgeInsets.all(15),
+            child: Slidable(
+              closeOnScroll: true,
+              endActionPane: ActionPane(
+                extentRatio: 0.2,
+                motion: const BehindMotion(),
+                children: [
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {});
+                            toggleIcon = !toggleIcon;
+                          },
+                          child: isToggleIcon(),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: colorList[index % colorList.length],
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(15),
+                  ),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color.fromRGBO(0, 0, 0, 0.15),
+                      offset: Offset(4, 8),
+                      blurRadius: 10,
+                    ),
                   ],
                 ),
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: colorList[index % colorList.length],
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(15),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          height: 70,
+                          width: 70,
+                          margin: const EdgeInsets.all(10),
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(Icons.image_outlined),
+                        ),
+                        Expanded(
+                          child: Column(
+                            children: [
+                              Text(
+                                "${cards[index]["title"]}",
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Text(
+                                "${cards[index]["description"]}",
+                                style: const TextStyle(fontSize: 12),
+                                textAlign: TextAlign.justify,
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
                     ),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Color.fromRGBO(0, 0, 0, 0.15),
-                        offset: Offset(4, 8),
-                        blurRadius: 10,
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            height: 70,
-                            width: 70,
-                            margin: const EdgeInsets.all(10),
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              shape: BoxShape.circle,
-                            ),
-                            child: const Icon(Icons.image_outlined),
-                          ),
-                          Expanded(
-                            child: Column(
-                              children: [
-                                Text(
-                                  "${cards[index]["title"]}",
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 8,
-                                ),
-                                Text(
-                                  "${cards[index]["description"]}",
-                                  style: const TextStyle(fontSize: 12),
-                                  textAlign: TextAlign.justify,
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                      const SizedBox(height: 8),
-                      Row(
-                        children: [
-                          const Spacer(),
-                          Text(
-                            "${cards[index]["date"]}",
-                            style: const TextStyle(fontSize: 12),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        const Spacer(),
+                        Text(
+                          "${cards[index]["date"]}",
+                          style: const TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-            );
-          }),
+            ),
+          );
+        },
+      ),
     );
   }
 }
