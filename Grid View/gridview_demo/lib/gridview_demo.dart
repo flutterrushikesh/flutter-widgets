@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class GridviewDemo extends StatelessWidget {
   const GridviewDemo({super.key});
@@ -11,18 +12,26 @@ class GridviewDemo extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.blue,
       ),
-      body: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2),
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return Container(
-              decoration: const BoxDecoration(
-                color: Colors.amber,
-              ),
-              child: Text("$index+1"),
-            );
-          }),
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 3,
+              mainAxisSpacing: 3,
+            ),
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.amber,
+                ),
+                child: Text("${index + 1}"),
+              );
+            }),
+      ),
     );
   }
 }
