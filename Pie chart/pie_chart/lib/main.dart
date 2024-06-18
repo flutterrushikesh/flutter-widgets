@@ -28,6 +28,7 @@ class _MyPieChartState extends State {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Student Ranks"),
+        backgroundColor: Colors.blue,
       ),
     );
   }
